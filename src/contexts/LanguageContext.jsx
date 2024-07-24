@@ -16,8 +16,8 @@ const LanguageProvider = ({ children }) => {
     }, [dispatch]);
 
     useEffect(() => {
-        changeLanguage(activeLanguage); // Set initial language
-    }, [activeLanguage, changeLanguage]);
+        changeLanguage('en'); // Set initial language to English
+    }, [changeLanguage]);
 
     return (
         <LanguageContext.Provider value={{ activeLanguage, changeLanguage }}>

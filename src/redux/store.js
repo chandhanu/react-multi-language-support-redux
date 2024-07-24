@@ -6,7 +6,7 @@ import { renderToStaticMarkup } from 'react-dom/server';
 import enTranslations from '../translations/en.json';
 import frTranslations from '../translations/fr.json';
 
-const translations_map = {
+const translationsMap = {
     en: enTranslations,
     fr: frTranslations,
     // Add more languages here if needed.
@@ -17,7 +17,10 @@ const reducer = combineReducers({
     locale: localizeReducer,
 });
 
-const store = createStore(reducer);
+const store = createStore(
+    reducer,
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__() // Enable Redux DevTools
+  );
 
 store.dispatch(initialize({
     languages: [
@@ -33,11 +36,11 @@ store.dispatch(initialize({
 
 export const loadTranslations = (lang) => {
     try {
-        console.log('Loaded translations for', lang, translations_map[lang]);
-        if (!translations_map[lang]) {
+        console.log(`Loaded translations for ${lang}`, translationsMap[lang]);
+        if (!translationsMap[lang]) {
             throw new Error(`Missing translations for language: ${lang}`);
         }
-        store.dispatch(addTranslationForLanguage(translations_map[lang], lang));
+        store.dispatch(addTranslationForLanguage(translationsMap[lang], lang));
     } catch (error) {
         console.error('Error loading translations:', error);
     }

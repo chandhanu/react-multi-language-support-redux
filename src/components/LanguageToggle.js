@@ -1,4 +1,4 @@
-// src/components/LanguageToggle.js
+// src/components/LanguageToggle.jsx
 import React, { useContext } from 'react';
 import { LanguageContext } from '../contexts/LanguageContext';
 
