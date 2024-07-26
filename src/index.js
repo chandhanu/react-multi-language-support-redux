@@ -1,13 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-import { LocalizeProvider } from 'react-localize-redux';
+import { LocalizeProviderWrapper } from './context/LocalizeContext';
+import './index.css';
 
 ReactDOM.render(
       <React.StrictMode>
-            <LocalizeProvider>
+            <LocalizeProviderWrapper>
                   <App />
-            </LocalizeProvider>
-      </React.StrictMode>, 
+            </LocalizeProviderWrapper>
+      </React.StrictMode>
+  ,
   document.getElementById('root')
 );

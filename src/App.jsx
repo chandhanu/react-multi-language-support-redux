@@ -1,32 +1,18 @@
 import React from 'react';
-import {Translate, withLocalize } from 'react-localize-redux';
-import enTranslations from './translations/en.json';
-import frTranslations from './translations/fr.json';
+import { withLocalize, Translate } from 'react-localize-redux';
+import { useLocalize } from './hooks/useLocalize';
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    props.initialize({
-      languages: [
-        { name: 'English', code: 'en' },
-        { name: 'French', code: 'fr' }
-      ],
-      translation: enTranslations,
-      options: { renderToStaticMarkup: false }
-    });
-    props.addTranslationForLanguage(frTranslations, 'fr');
-  }
+const App = ({ initialize, addTranslationForLanguage, setActiveLanguage }) => {
+    const { handleLanguageChange } = useLocalize(initialize, addTranslationForLanguage);
 
-  render() {
     return (
-      <div>
-        <h1><Translate id="hello" /></h1>
-        <h1><Translate id="goodbye" /></h1>
-        <button onClick={() => this.props.setActiveLanguage('en')}>English</button>
-        <button onClick={() => this.props.setActiveLanguage('fr')}>French</button>
-      </div>
+        <div>
+            <h1><Translate id="hello" /></h1>
+            <h1><Translate id="goodbye" /></h1>
+            <button onClick={() => handleLanguageChange(setActiveLanguage, 'en')}>English</button>
+            <button onClick={() => handleLanguageChange(setActiveLanguage, 'fr')}>French</button>
+        </div>
     );
-  }
-}
+};
 
 export default withLocalize(App);
