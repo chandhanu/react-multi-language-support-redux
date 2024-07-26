@@ -1,4 +1,8 @@
 {
-    "hello": "Hello",
-    "goodbye": "Goodbye"
+  "hello": "Hello",
+  "goodbye": "Goodbye",
+  "exampleComponent": {
+    "title": "Example Component",
+    "description": "This component demonstrates localization."
   }
+}
