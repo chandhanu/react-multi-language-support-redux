@@ -1,15 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
-import store from './redux/store';
-import { LanguageProvider } from './contexts/LanguageContext';
 import App from './App';
+import { LocalizeProvider } from 'react-localize-redux';
 
 ReactDOM.render(
-  <Provider store={store}>
-    <LanguageProvider>
-      <App />
-    </LanguageProvider>
-  </Provider>,
+      <React.StrictMode>
+            <LocalizeProvider>
+                  <App />
+            </LocalizeProvider>
+      </React.StrictMode>, 
   document.getElementById('root')
 );

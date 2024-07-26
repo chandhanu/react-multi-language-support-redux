@@ -1,21 +1,32 @@
-// src/App.jsx
 import React from 'react';
-import { Provider } from 'react-redux';
-import store from './redux/store';
-import { LanguageProvider } from './contexts/LanguageContext';
-import LanguageToggle from './components/LanguageToggle';
-import MyComponent from './components/MyComponent';
-import { withLocalize } from 'react-localize-redux';
+import {Translate, withLocalize } from 'react-localize-redux';
+import enTranslations from './translations/en.json';
+import frTranslations from './translations/fr.json';
 
-function App() {
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    props.initialize({
+      languages: [
+        { name: 'English', code: 'en' },
+        { name: 'French', code: 'fr' }
+      ],
+      translation: enTranslations,
+      options: { renderToStaticMarkup: false }
+    });
+    props.addTranslationForLanguage(frTranslations, 'fr');
+  }
+
+  render() {
     return (
-        <Provider store={store}>
-            <LanguageProvider>
-                <MyComponent />
-                <LanguageToggle />
-            </LanguageProvider>
-        </Provider>
+      <div>
+        <h1><Translate id="hello" /></h1>
+        <h1><Translate id="goodbye" /></h1>
+        <button onClick={() => this.props.setActiveLanguage('en')}>English</button>
+        <button onClick={() => this.props.setActiveLanguage('fr')}>French</button>
+      </div>
     );
+  }
 }
 
 export default withLocalize(App);
