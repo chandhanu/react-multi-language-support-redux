@@ -1,0 +1,8 @@
+{
+    "hello": "Hola",
+    "goodbye": "Adiós",
+    "exampleComponent": {
+      "title": "Componente de ejemplo",
+      "description": "Este componente demuestra la localización."
+    }
+  }

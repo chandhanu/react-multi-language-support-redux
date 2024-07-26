@@ -1,3 +1,4 @@
+// src/context/LocalizeContext.js
 import React, { useEffect, useState } from 'react';
 import { LocalizeProvider, withLocalize } from 'react-localize-redux';
 import _ from 'lodash';
@@ -9,7 +10,7 @@ const LocalizeWrapper = ({ initialize, addTranslationForLanguage, children }) =>
 
   useEffect(() => {
     if (!localizeInitialized) {
-      initialize(getLocalizeOptions(['en', 'fr']));
+      initialize(getLocalizeOptions(['en', 'fr', 'es']));
 
       _.forEach(translations, (translation, language) => {
         addTranslationForLanguage(translation, language);

@@ -1,8 +1,10 @@
 import _ from 'lodash';
 
+// Add any new languages here
 const languageOptions = [
   { name: 'English', code: 'en' },
   { name: 'French', code: 'fr' },
+  { name: 'Spanish', code: 'es' }, // Example of adding a new language
 ];
 
 const getLocalizeOptions = (languages) => ({

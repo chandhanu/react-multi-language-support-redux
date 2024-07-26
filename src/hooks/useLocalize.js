@@ -1,3 +1,4 @@
+// useLocalize.js
 import { useCallback } from 'react';
 
 export const useLocalize = (initialize, addTranslationForLanguage) => {

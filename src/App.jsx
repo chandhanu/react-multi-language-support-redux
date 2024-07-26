@@ -7,11 +7,12 @@ const AppComponent = ({ initialize, addTranslationForLanguage, setActiveLanguage
   const { handleLanguageChange } = useLocalize(initialize, addTranslationForLanguage);
 
   return (
-    <div>
+    <div >
       <h1><Translate id="hello" /></h1>
       <h1><Translate id="goodbye" /></h1>
       <button onClick={() => handleLanguageChange(setActiveLanguage, 'en')}>English</button>
       <button onClick={() => handleLanguageChange(setActiveLanguage, 'fr')}>French</button>
+      <button onClick={() => handleLanguageChange(setActiveLanguage, 'es')}>Spanish</button>
       <ExampleComponent />
     </div>
   );
